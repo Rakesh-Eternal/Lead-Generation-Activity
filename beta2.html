@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GGG Plants — Lead-Gen Landing Page</title>
+    <meta
+      name="description"
+      content="Find indoor plants that thrive in your home. Personalized picks, healthy-arrival guarantee, and expert care tips. Lead-gen landing page for GGG."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green-900: #0f3d2e; /* deep forest */
+        --green-700: #1f6a50; /* foliage */
+        --green-600: #2f8f6b; /* leaf */
+        --green-500: #44a07a; /* light leaf */
+        --green-300: #a9e5c2; /* mint */
+        --beige-50: #f5f2ea; /* paper */
+        --beige-100: #efeadd;
+        --accent-amber: #ffcc66;
+        --danger: #e24d4d;
+        --ok: #11a36a;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        --radius-2xl: 22px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: var(--beige-50);
+        color: #103227;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+      }
+      .container {
+        width: min(1200px, 92vw);
+        margin-inline: auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(
+          180deg,
+          rgba(245, 242, 234, 0.95),
+          rgba(245, 242, 234, 0.8)
+        );
+        backdrop-filter: saturate(1.2) blur(6px);
+        border-bottom: 1px solid #e6e1d4;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: radial-gradient(
+          ellipse at 30% 30%,
+          var(--green-500),
+          var(--green-900)
+        );
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.15), var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .brand-logo::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -25% -10%;
+        height: 70%;
+        background: radial-gradient(
+          ellipse at 50% 20%,
+          rgba(255, 255, 255, 0.35),
+          transparent 60%
+        );
+      }
+      .brand-name {
+        font-weight: 700;
+        letter-spacing: 0.3px;
+      }
+      .pill {
+        padding: 0.55rem 0.95rem;
+        border-radius: 999px;
+        background: var(--green-900);
+        color: #fff;
+        font-weight: 600;
+        border: 0;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: transform 0.12s ease;
+      }
+      .pill:hover {
+        transform: translateY(-1px);
+      }
+      .icon-btn {
+        background: #fff;
+        border: 1px solid #e6e1d4;
+        border-radius: 14px;
+        padding: 0.6rem 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+      .cart-count {
+        display: inline-flex;
+        min-width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        background: var(--danger);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        isolation: isolate;
+      }
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+        padding: 48px 0;
+      }
+      .eyebrow {
+        font-size: 0.85rem;
+        color: #205a45;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        line-height: 1.05;
+        margin: 0.35rem 0 1rem;
+        font-size: clamp(32px, 5vw, 56px);
+        color: #0e3a2b;
+      }
+      .sub {
+        font-size: clamp(14px, 2.2vw, 18px);
+        color: #325d4b;
+        max-width: 48ch;
+      }
+      .lead-card {
+        background: #fff;
+        border: 1px solid #e6e1d4;
+        border-radius: var(--radius-2xl);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .form-grid .full {
+        grid-column: 1/-1;
+      }
+      label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #254f40;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 0.8rem 0.9rem;
+        border: 1px solid #d7d1c1;
+        border-radius: 12px;
+        background: #fff;
+      }
+      .cta {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .btn {
+        padding: 0.9rem 1.1rem;
+        border-radius: 14px;
+        border: 0;
+        background: linear-gradient(135deg, var(--green-700), var(--green-600));
+        color: #fff;
+        font-weight: 700;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+      .btn.secondary {
+        background: #fff;
+        color: #174c3a;
+        border: 1px solid #c9c2b0;
+      }
+      .note {
+        font-size: 0.8rem;
+        color: #4b6b5c;
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 900px;
+      }
+      .hero-plant {
+        position: absolute;
+        inset: auto 10% 0 10%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at 50% 30%,
+          rgba(255, 255, 255, 0.6),
+          transparent 60%
+        );
+      }
+      .svg-vines {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.22;
+      }
+
+      /* FLOATING LEAVES */
+      .leaf {
+        position: absolute;
+        top: -60px;
+        width: 34px;
+        height: 34px;
+        opacity: 0.75;
+        will-change: transform, opacity;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.12));
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-60px) translateX(0) rotate(0);
+        }
+        50% {
+          transform: translateY(45vh) translateX(40px) rotate(120deg);
+        }
+        100% {
+          transform: translateY(90vh) translateX(-30px) rotate(260deg);
+          opacity: 0.2;
+        }
+      }
+
+      /* TRUST BAR */
+      .trust {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .trust .chip {
+        background: #fff;
+        border: 1px solid #e6e1d4;
+        border-radius: 14px;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: var(--shadow);
+      }
+
+      /* PRODUCTS */
+      .card {
+        width: 300px; /* Fixed width */
+        height: 420px; /* Fixed height */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px; /* Fixed height for image area */
+        object-fit: cover; /* Crop image to fit without distortion */
+        display: block;
+      }
+
+      .card-content {
+        flex: 1;
+        padding: 12px;
+        overflow: hidden; /* Hide overflowing text if needed */
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+      .section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(26px, 3.8vw, 38px);
+        margin: 0 0 14px;
+      }
+      .section .sub {
+        margin-bottom: 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e6e1d4;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+      .card-figure {
+        aspect-ratio: 4/3;
+        background: linear-gradient(180deg, #eaf6ef, #ffffff);
+      }
+      .badge {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        background: var(--accent-amber);
+        color: #3b2a0a;
+        padding: 0.35rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .card-body {
+        padding: 14px;
+      }
+      .price {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+      .price .mrp {
+        text-decoration: line-through;
+        color: #8a8270;
+        font-size: 0.9rem;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #205a45;
+        font-weight: 600;
+      }
+      .availability {
+        margin-left: auto;
+        padding: 0.25rem 0.5rem;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        background: #eaf6ef;
+        color: #185c45;
+      }
+      .actions {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: auto;
+      }
+
+      /* CART DRAWER */
+      .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(420px, 96vw);
+        background: #fff;
+        border-left: 1px solid #e6e1d4;
+        transform: translateX(100%);
+        transition: transform 0.28s ease;
+        z-index: 1200;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
+      }
+      .cart-drawer.open {
+        transform: translateX(0);
+      }
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-list {
+        flex: 1;
+        overflow: auto;
+        padding: 10px 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .cart-item {
+        display: grid;
+        grid-template-columns: 62px 1fr auto;
+        gap: 10px;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 8px;
+      }
+      .qty {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .qty button {
+        width: 28px;
+        height: 28px;
+        border: 1px solid #d8d3c3;
+        background: #fff;
+        border-radius: 8px;
+      }
+      .cart-footer {
+        border-top: 1px solid #eee;
+        padding: 14px 16px;
+        display: grid;
+        gap: 10px;
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+      }
+      .whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: #25d366;
+        color: #0b3;
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      /* MODAL */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        background: rgba(16, 50, 39, 0.45);
+        backdrop-filter: blur(3px);
+        z-index: 1100;
+      }
+      .modal.open {
+        display: grid;
+      }
+      .modal-card {
+        width: min(840px, 94vw);
+        max-height: 90vh;
+        overflow: auto;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        border: 1px solid #e6e1d4;
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .modal-body {
+        padding: 16px;
+      }
+
+      /* FAQ */
+      details {
+        background: #fff;
+        border: 1px solid #e6e1d4;
+        border-radius: 14px;
+        padding: 12px;
+      }
+      details + details {
+        margin-top: 10px;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 24px 0;
+        color: #325d4b;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 980px) {
+        .hero-wrap {
+          grid-template-columns: 1fr;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .trust {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 620px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Reduced motion respect */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+    <!-- GA4 Placeholder: replace G-XXXXXXX -->
+    <script>
+      // Basic gtag stub so event calls don't fail if ID not set yet
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXX");
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand" aria-label="GGG brand">
+          <div class="brand-logo" aria-hidden="true"></div>
+          <div class="brand-name">GGG • Green Goodness & Growth</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.6rem">
+          <div
+            id="offer-badge"
+            style="
+              background: #ff4d4d;
+              color: white;
+              font-weight: bold;
+              padding: 0.4rem 0.8rem;
+              border-radius: 12px;
+              font-size: 0.9rem;
+              display: inline-flex;
+              align-items: center;
+              gap: 0.4rem;
+              cursor: pointer;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+              position: relative;
+              overflow: visible;
+            "
+          >
+            🎉Limited Offer!
+            <canvas
+              id="fireworks"
+              width="150"
+              height="80"
+              style="
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+              "
+            ></canvas>
+          </div>
+
+          <script>
+            (function () {
+              if (!localStorage.getItem("offer_seen")) {
+                const canvas = document.getElementById("fireworks");
+                const ctx = canvas.getContext("2d");
+                let particles = [];
+
+                function createFirework() {
+                  particles = [];
+                  for (let i = 0; i < 50; i++) {
+                    particles.push({
+                      x: canvas.width / 2,
+                      y: canvas.height / 2,
+                      angle: Math.random() * 2 * Math.PI,
+                      speed: 2 + Math.random() * 3,
+                      radius: 2 + Math.random() * 2,
+                      color: `hsl(${Math.random() * 360},100%,50%)`,
+                      alpha: 1,
+                    });
+                  }
+                }
+
+                function update() {
+                  ctx.clearRect(0, 0, canvas.width, canvas.height);
+                  particles.forEach((p) => {
+                    p.x += Math.cos(p.angle) * p.speed;
+                    p.y += Math.sin(p.angle) * p.speed;
+                    p.alpha -= 0.02;
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                  });
+                  particles = particles.filter((p) => p.alpha > 0);
+                  if (particles.length > 0) requestAnimationFrame(update);
+                }
+
+                createFirework();
+                update();
+                localStorage.setItem("offer_seen", true);
+              }
+            })();
+          </script>
+
+          <button class="icon-btn" id="openLead">
+            <span>Get ₹150 Off</span>
+          </button>
+          <button class="icon-btn" id="cartBtn" aria-label="Cart">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1f6a50"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path
+                d="M1 1h4l2.68 12.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              />
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Floating leaves container -->
+      <div id="leaves" aria-hidden="true"></div>
+
+      <section class="hero">
+        <svg
+          class="svg-vines"
+          viewBox="0 0 1440 600"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="vine" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#2f8f6b" stop-opacity=".5" />
+              <stop offset="100%" stop-color="#0f3d2e" stop-opacity=".5" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0,100 C200,80 280,180 420,150 C600,110 700,220 860,200 C1060,170 1160,260 1440,220 L1440,0 L0,0Z"
+            fill="url(#vine)"
+          />
+          <path
+            d="M0,220 C180,250 300,180 480,210 C680,245 860,120 1040,180 C1200,235 1320,210 1440,240 L1440,0 L0,0Z"
+            fill="url(#vine)"
+            opacity=".55"
+          />
+        </svg>
+        <div class="container hero-wrap">
+          <div>
+            <div class="eyebrow">
+              Pan-India Delivery • 30-Day Plant Promise • WhatsApp Expert
+              Support • Care PDF included • Pincode-wise delivery ETA
+            </div>
+            <h1>Plants That <em>Thrive</em> in Your Home</h1>
+            <p class="sub">
+              Answer a few quick questions. Get ₹150 off + a care mini-guide.
+            </p>
+
+            <div class="lead-card" role="form" aria-labelledby="leadHeading">
+              <h3 id="leadHeading" style="margin: 6px 0 10px">
+                Claim Your Offer
+              </h3>
+              <form id="leadForm" class="form-grid" novalidate>
+                <div>
+                  <label for="leadName">Full Name</label>
+                  <input
+                    id="leadName"
+                    name="name"
+                    placeholder="e.g., Rakesh G"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="leadEmail">Email</label>
+                  <input
+                    id="leadEmail"
+                    name="email"
+                    type="email"
+                    placeholder="e.g., name@example.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="leadPhone">Phone</label>
+                  <input
+                    id="leadPhone"
+                    name="phone"
+                    inputmode="tel"
+                    placeholder="10-digit mobile"
+                  />
+                </div>
+                <div>
+                  <label for="leadPincode">Pincode</label>
+                  <input
+                    id="leadPincode"
+                    name="pincode"
+                    inputmode="numeric"
+                    placeholder="562101"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="leadFreebie">Choose Your Offer</label>
+                  <select id="leadFreebie" name="freebie">
+                    <option value="coupon">Free Plant</option>
+                    <option value="pdf">Plant Care PDF</option>
+                    <option value="whatsapp">WhatsApp Tips (14 days)</option>
+                  </select>
+                </div>
+                <div
+                  class="full"
+                  style="display: flex; gap: 0.6rem; align-items: center"
+                >
+                  <input id="leadConsent" type="checkbox" required />
+                  <label for="leadConsent" style="font-weight: 500"
+                    >I agree to receive care tips & offers via email/WhatsApp. I
+                    can opt out anytime.</label
+                  >
+                </div>
+                <div class="full cta">
+                  <button class="btn" type="submit">Get My Offer</button>
+                  <button class="btn secondary" type="button" id="quizBtn">
+                    Find My Plant
+                  </button>
+                </div>
+                <p class="note full">
+                  We respect your privacy. Data is stored in your browser (no
+                  server). DPDP-friendly consent.
+                </p>
+              </form>
+            </div>
+
+            <div class="trust">
+              <div class="chip">✅ Healthy Arrival Guarantee</div>
+              <div class="chip">🚚 Same-Day Available</div>
+              <div class="chip">📦 Eco Packaging</div>
+              <div class="chip">⭐ 4.8/5 by Plant Lovers</div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img
+              class="hero-plant"
+              alt="Lush indoor plants"
+              src="imgs/f2.png"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Best Sellers &amp; New Arrivals</h2>
+          <p class="sub">
+            Curated for Indian homes & offices. Low-maintenance, pet-safe, and
+            air-purifying options.
+          </p>
+          <div id="productGrid" class="grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        style="background: linear-gradient(180deg, #eef6f0, #fff)"
+      >
+        <div class="container">
+          <h2>How It Works</h2>
+          <div class="grid">
+            <div class="card" style="padding: 18px">
+              <h3>1) Tell Us Your Space</h3>
+              <p>
+                Share your pincode & light level. We personalize plant picks to
+                your climate & routine.
+              </p>
+            </div>
+            <div class="card" style="padding: 18px">
+              <h3>2) Delivered Fresh</h3>
+              <p>
+                Our climate-safe packaging keeps plants hydrated & protected
+                across India.
+              </p>
+            </div>
+            <div class="card" style="padding: 18px">
+              <h3>3) Thrive with Care Tips</h3>
+              <p>
+                Get a 14-day WhatsApp guide + watering reminders. We’re here if
+                you need us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Fancy FAQ Headline -->
+      <h2
+        style="
+          font-size: 2rem;
+          font-weight: 800;
+          text-align: center;
+          margin: 40px 0 20px;
+          font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+            Inter, 'Helvetica Neue', Arial;
+          color: #0f172a;
+          position: relative;
+          display: inline-block;
+        "
+      >
+        Frequently Asked Questions
+        <span
+          style="
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            border-radius: 2px;
+            margin: 8px auto 0;
+            width: 60%;
+          "
+        ></span>
+      </h2>
+
+      <!-- GGG: Lead-Gen FAQ (stacked accordions with smooth animations) -->
+      <section class="faq">
+        <style>
+          .faq {
+            --bg: #ffffff;
+            --ink: #0f172a; /* slate-900 */
+            --muted: #475569; /* slate-600 */
+            --ring: #22c55e33; /* emerald ring */
+            --accent: #10b981; /* emerald-500 */
+            --card: #f8fafc; /* slate-50 */
+            --radius: 14px;
+            --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI,
+              Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji",
+              "Segoe UI Emoji";
+            color: var(--ink);
+          }
+
+          .faq details {
+            background: var(--bg);
+            border: 1px solid #e2e8f0; /* slate-200 */
+            border-radius: var(--radius);
+            margin: 10px 0;
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease,
+              border-color 0.18s ease;
+            overflow: hidden;
+          }
+
+          .faq details:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 40px rgba(2, 6, 23, 0.12);
+            border-color: #dbeafe; /* blue-100 */
+          }
+
+          .faq summary {
+            cursor: pointer;
+            list-style: none; /* hide default marker */
+            padding: 18px 20px 18px 56px;
+            position: relative;
+            font-weight: 700;
+            font-size: 1.02rem;
+            user-select: none;
+            outline: none;
+          }
+
+          /* Remove default disclosure marker (Safari/Chrome) */
+          .faq summary::-webkit-details-marker {
+            display: none;
+          }
+
+          /* Chevron */
+          .faq summary .chev {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            translate: 0 -50%;
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: #ecfeff; /* cyan-50 */
+            border: 1px solid #cffafe; /* cyan-100 */
+            transition: transform 0.25s ease, background 0.25s ease,
+              border-color 0.25s ease;
+          }
+          .faq summary .chev svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s ease;
+          }
+
+          /* Animated content panel */
+          .faq .content {
+            padding: 0 20px 20px 56px;
+            line-height: 1.6;
+            color: var(--muted);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.35s ease;
+            background: linear-gradient(to bottom, transparent, var(--card));
+          }
+
+          /* Open state */
+          .faq details[open] {
+            border-color: #bbf7d0; /* green-200 */
+            box-shadow: 0 18px 50px rgba(2, 6, 23, 0.14);
+          }
+          .faq details[open] .content {
+            max-height: 420px; /* adjust if answers get longer */
+            opacity: 1;
+          }
+          .faq details[open] summary .chev {
+            background: #ecfdf5; /* emerald-50 */
+            border-color: #a7f3d0; /* emerald-200 */
+          }
+          .faq details[open] summary .chev svg {
+            transform: rotate(180deg);
+          }
+
+          /* Focus ring for a11y */
+          .faq summary:focus-visible {
+            box-shadow: 0 0 0 4px var(--ring);
+            border-radius: calc(var(--radius) - 2px);
+          }
+
+          /* Respect reduced-motion */
+          @media (prefers-reduced-motion: reduce) {
+            .faq details,
+            .faq .content,
+            .faq summary .chev,
+            .faq summary .chev svg {
+              transition: none !important;
+            }
+          }
+        </style>
+
+        <!-- Q1 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>How do I know which plant is right for my home?</strong>
+          </summary>
+          <div class="content">
+            Our 90-second <em>Plant Match Quiz</em> recommends plants based on
+            your light, care preference, and space. You’ll get a curated starter
+            set that’s made to thrive.
+          </div>
+        </details>
+
+        <!-- Q2 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>What if my plant arrives damaged or unhealthy?</strong>
+          </summary>
+          <div class="content">
+            You’re covered by our
+            <strong>7-Day Healthy Arrival Promise</strong>. If there’s any
+            transit damage or undue stress, share unboxing photos within 24
+            hours and we’ll replace or refund.
+          </div>
+        </details>
+
+        <!-- Q3 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Do you ship to my location?</strong>
+          </summary>
+          <div class="content">
+            We deliver across most pincodes in India. Enter your pincode in the
+            form to see real-time availability and ETA.
+          </div>
+        </details>
+
+        <!-- Q4 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>How fast will I get my plants?</strong>
+          </summary>
+          <div class="content">
+            Most orders arrive in <strong>3–5 working days</strong> depending on
+            your location. We ship grower-fresh plants in protective,
+            shock-shield packaging.
+          </div>
+        </details>
+
+        <!-- Q5 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Are the plants easy to maintain?</strong>
+          </summary>
+          <div class="content">
+            Yes! We specialize in low-maintenance indoor plants. Plus, enjoy
+            <strong>14 days of free WhatsApp Plant Coaching</strong> to help
+            them settle in.
+          </div>
+        </details>
+
+        <!-- Q6 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Do you offer pots or only plants?</strong>
+          </summary>
+          <div class="content">
+            Our starter sets include matching planters. You can upgrade to
+            premium self-watering pots for even easier care.
+          </div>
+        </details>
+
+        <!-- Q7 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Can I send plants as gifts?</strong>
+          </summary>
+          <div class="content">
+            Absolutely. Choose the <em>Gift Option</em> and we’ll include a
+            handwritten note and premium gift wrapping.
+          </div>
+        </details>
+
+        <!-- Q8 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Do you accept returns on plants?</strong>
+          </summary>
+          <div class="content">
+            For plant health, we don’t do traditional returns. Instead, our
+            <strong>Healthy Arrival Promise</strong> ensures you never receive
+            an unhealthy plant.
+          </div>
+        </details>
+
+        <!-- Q9 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>What payment methods do you accept?</strong>
+          </summary>
+          <div class="content">
+            We accept UPI, credit/debit cards, net banking, and popular wallets.
+            COD is available in select locations.
+          </div>
+        </details>
+
+        <!-- Q10 -->
+        <details>
+          <summary>
+            <span class="chev" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+            <strong>Will I get any discounts or offers?</strong>
+          </summary>
+          <div class="content">
+            New customers can choose between <strong>₹150 credit</strong> or
+            <strong>14-day WhatsApp Plant Coaching</strong> after completing the
+            quiz and sharing details.
+          </div>
+        </details>
+      </section>
+
+      <section class="section" style="background: #f2eee3">
+        <div class="container">
+          <h2>Corporate & Bulk Gifting</h2>
+          <p class="sub">
+            GST-ready invoices, customization, handwritten notes, and time-bound
+            SLAs for events & holidays.
+          </p>
+          <button class="btn" id="openCorporate">Get a Quick Quote</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- CART DRAWER -->
+    <aside
+      class="cart-drawer"
+      id="cartDrawer"
+      aria-hidden="true"
+      aria-label="Shopping cart"
+    >
+      <div class="cart-header">
+        <strong>Your Cart</strong>
+        <button class="icon-btn" id="closeCart">Close</button>
+      </div>
+      <div class="cart-list" id="cartList"></div>
+      <div class="cart-footer">
+        <div style="display: flex; gap: 8px; align-items: center">
+          <input
+            id="couponInput"
+            placeholder="Coupon code"
+            style="
+              flex: 1;
+              padding: 0.7rem 0.9rem;
+              border: 1px solid #d7d1c1;
+              border-radius: 12px;
+            "
+          />
+          <button class="btn secondary" id="applyCoupon">Apply</button>
+        </div>
+        <div class="total">
+          <span>Subtotal</span><span id="cartTotal">₹0</span>
+        </div>
+        <button
+          class="whatsapp"
+          id="checkoutWA"
+          aria-label="Checkout via WhatsApp"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.52 3.48A11.82 11.82 0 0 0 12.07 0h-.14A11.93 11.93 0 0 0 0 12a11.82 11.82 0 0 0 3.48 8.45L2 24l3.66-1.43A11.93 11.93 0 0 0 12 24a12 12 0 0 0 12-12 11.82 11.82 0 0 0-3.48-8.52Z"
+            />
+            <path
+              d="M16.24 13.37c-.26-.13-1.53-.76-1.77-.84s-.41-.13-.58.13-.66.84-.81 1-.3.19-.55.06a9.67 9.67 0 0 1-2.86-1.76A10.73 10.73 0 0 1 7 9.12c-.15-.26 0-.4.11-.53s.26-.32.39-.48a1.73 1.73 0 0 0 .26-.45.5.5 0 0 0 0-.45c0-.13-.58-1.39-.8-1.9s-.42-.44-.58-.45h-.5a1 1 0 0 0-.71.33 3 3 0 0 0-.93 2.2 5.17 5.17 0 0 0 1.08 2.75 11.8 11.8 0 0 0 4.5 4.39 15.43 15.43 0 0 0 1.51.62 3.65 3.65 0 0 0 1.67.1 2.73 2.73 0 0 0 1.78-1.25 2.31 2.31 0 0 0 .16-1.25c-.06-.11-.24-.17-.5-.3Z"
+            />
+          </svg>
+          Checkout via WhatsApp
+        </button>
+      </div>
+    </aside>
+
+    <!-- PRODUCT MODAL -->
+    <div
+      class="modal"
+      id="productModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="productTitle"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <strong id="productTitle">Product Details</strong>
+          <button class="icon-btn" id="closeProduct">Close</button>
+        </div>
+        <div class="modal-body" id="productBody"></div>
+      </div>
+    </div>
+
+    <!-- LEAD MODAL -->
+    <div
+      class="modal"
+      id="leadModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="leadThanks"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <strong id="leadThanks">You're In! 🎉</strong>
+          <button class="icon-btn" id="closeLead">Close</button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Thanks for joining the GGG plant fam. Your selected freebie is on
+            the way. Check your inbox/WhatsApp in a few minutes.
+          </p>
+          <p style="margin-top: 10px">
+            Your unique code: <strong id="codeOut">GGG150</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORPORATE MODAL -->
+    <div
+      class="modal"
+      id="corpModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="corpTitle"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <strong id="corpTitle">Corporate / Bulk Enquiry</strong>
+          <button class="icon-btn" id="closeCorp">Close</button>
+        </div>
+        <div class="modal-body">
+          <form id="corpForm" class="form-grid" novalidate>
+            <div class="full">
+              <label for="cname">Company Name</label
+              ><input id="cname" required placeholder="VTU Pvt Ltd" />
+            </div>
+            <div>
+              <label for="cemail">Email</label
+              ><input
+                id="cemail"
+                type="email"
+                required
+                placeholder="name@company.com"
+              />
+            </div>
+            <div>
+              <label for="cphone">Phone</label
+              ><input
+                id="cphone"
+                inputmode="tel"
+                placeholder="Contact number"
+              />
+            </div>
+            <div>
+              <label for="ccity">City</label
+              ><input id="ccity" placeholder="Mysuru" />
+            </div>
+            <div>
+              <label for="cqty">Qty</label
+              ><input id="cqty" type="number" min="1" value="25" />
+            </div>
+            <div class="full">
+              <label for="cmsg">Message</label
+              ><input id="cmsg" placeholder="Occasion, date, notes" />
+            </div>
+            <div class="full">
+              <button class="btn" type="submit">Request Quote</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <style>
+        .footer {
+          background: #0f3d2e; /* var(--green-900) */
+          color: #f5f2ea; /* var(--beige-50) */
+          padding: 1.5rem 0;
+          text-align: center;
+          font-family: Poppins, system-ui, sans-serif;
+        }
+        .footer-social {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 0.8rem;
+        }
+        .footer-social a {
+          background: #f5f2ea; /* var(--beige-50) */
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0f3d2e; /* var(--green-900) */
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+          transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .footer-social a:hover {
+          transform: scale(1.15) rotate(-5deg);
+          background: #a9e5c2; /* var(--green-300) */
+        }
+        .footer-social img {
+          width: 20px;
+          height: 20px;
+          display: block;
+        }
+        .footer-copy {
+          font-size: 0.85rem;
+          opacity: 0.85;
+        }
+      </style>
+
+      <div class="footer-social">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <img
+            src="https://unpkg.com/feather-icons/dist/icons/facebook.svg"
+            alt="Facebook"
+          />
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <img
+            src="https://unpkg.com/feather-icons/dist/icons/instagram.svg"
+            alt="Instagram"
+          />
+        </a>
+        <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
+          <img
+            src="https://unpkg.com/simple-icons/icons/pinterest.svg"
+            alt="Pinterest"
+          />
+        </a>
+
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <img
+            src="https://unpkg.com/feather-icons/dist/icons/twitter.svg"
+            alt="Twitter"
+          />
+        </a>
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+          <img
+            src="https://unpkg.com/feather-icons/dist/icons/youtube.svg"
+            alt="YouTube"
+          />
+        </a>
+      </div>
+
+      <div class="footer-copy">
+        &copy; 2025 GGG Plants. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // ------------------------------
+      // Data & Utilities
+      // ------------------------------
+      const $$ = (sel, ctx = document) => ctx.querySelector(sel);
+      const $$$ = (sel, ctx = document) =>
+        Array.from(ctx.querySelectorAll(sel));
+
+      const products = [
+        {
+          id: "p1",
+          name: "Snake Plant",
+          price: 799,
+          mrp: 999,
+          rating: 4.8,
+          reviews: 412,
+          availability: "In Stock",
+          short: "Low-light tolerant, air-purifying, beginner friendly.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Low to moderate light; water every 10–14 days.",
+          zone: "9–11 (thrives indoors across India)",
+          pot: "6-inch recycled pot; well-draining mix",
+          imgs: ["imgs/p11.png", "imgs/p12.png"],
+          sellerReviews: "98% positive over last 12 months.",
+          shipping: "Ships in 24–48 hrs. Climate-safe packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives pest-checked.",
+          pests: "Generally resistant; watch for mealybugs.",
+        },
+        {
+          id: "p2",
+          name: "Areca Palm",
+          price: 1099,
+          mrp: 1299,
+          rating: 4.7,
+          reviews: 365,
+          availability: "In Stock",
+          short: "Tall, elegant indoor plant with high air-purification.",
+          size: "Large",
+          age: "2–3 years",
+          care: "Bright indirect light; water every 7–10 days.",
+          zone: "10–11 (best indoors across India)",
+          pot: "8-inch eco-friendly pot; rich soil mix",
+          imgs: ["imgs/p21.png", "imgs/p22.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Ships in 24–48 hrs. Eco-safe packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free guarantee.",
+          pests: "Watch for spider mites.",
+        },
+        {
+          id: "p3",
+          name: "Money Plant (Pothos)",
+          price: 499,
+          mrp: 699,
+          rating: 4.9,
+          reviews: 845,
+          availability: "In Stock",
+          short: "Symbol of prosperity; easy-growing vine.",
+          size: "Small",
+          age: "6–12 months",
+          care: "Low to bright indirect light; water weekly.",
+          zone: "9–11 (thrives in pots & hanging baskets)",
+          pot: "4-inch nursery pot; organic potting mix",
+          imgs: ["imgs/p31.png", "imgs/p32.png"],
+          sellerReviews: "99% positive over last year.",
+          shipping: "Dispatches within 24 hrs; eco-packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-inspected before shipping.",
+          pests: "Occasional aphids, easily treatable.",
+        },
+        {
+          id: "p4",
+          name: "Peace Lily",
+          price: 899,
+          mrp: 1099,
+          rating: 4.8,
+          reviews: 522,
+          availability: "In Stock",
+          short: "Elegant white blooms, air-purifying champion.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Medium to low light; water twice a week.",
+          zone: "9–11 (best indoors in India)",
+          pot: "6-inch decorative ceramic pot",
+          imgs: ["imgs/p41.png", "imgs/p42.png"],
+          sellerReviews: "98% positive feedback.",
+          shipping: "Same-day dispatch; climate-safe packaging.",
+          refund: "30-day replacement policy.",
+          warranty: "30 days",
+          health: "Checked for pests and fungal issues.",
+          pests: "Occasional scale insects.",
+        },
+        {
+          id: "p5",
+          name: "Aloe Vera",
+          price: 399,
+          mrp: 599,
+          rating: 4.7,
+          reviews: 605,
+          availability: "In Stock",
+          short: "Medicinal succulent; skin and health benefits.",
+          size: "Small",
+          age: "1 year",
+          care: "Full to partial sunlight; water every 2–3 weeks.",
+          zone: "8–11 (thrives outdoors & sunny balconies)",
+          pot: "5-inch plastic pot; sandy soil mix",
+          imgs: ["imgs/p51.png", "imgs/p52.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Dispatch within 24 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives pest-checked.",
+          pests: "Generally pest-free.",
+        },
+        {
+          id: "p6",
+          name: "Money Plant (Pothos)",
+          price: 349,
+          mrp: 499,
+          rating: 4.7,
+          reviews: 528,
+          availability: "In Stock",
+          short: "Brings prosperity, easy to grow in water or soil.",
+          size: "Medium",
+          age: "6 months – 1 year",
+          care: "Indirect light; water when topsoil is dry.",
+          zone: "All India (best indoors)",
+          pot: "5-inch decorative pot; cocopeat mix",
+          imgs: ["imgs/p61.png", "imgs/p62.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Ships in 24 hrs. Eco-safe box.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free on arrival.",
+          pests: "Occasional aphids, mealybugs.",
+        },
+        {
+          id: "p7",
+          name: "Spider Plant",
+          price: 399,
+          mrp: 599,
+          rating: 4.8,
+          reviews: 348,
+          availability: "In Stock",
+          short: "Easy to grow; air-purifying hanging plant.",
+          size: "Small",
+          age: "1 year",
+          care: "Bright, indirect light; water weekly.",
+          zone: "9–11 (ideal indoors across India)",
+          pot: "6-inch plastic pot; organic soil",
+          imgs: ["imgs/p71.png", "imgs/p72.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Ships in 24 hrs; eco-friendly wrap.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Healthy roots and foliage.",
+          pests: "Occasional aphids; neem spray works.",
+        },
+        {
+          id: "p9",
+          name: "Jade Plant",
+          price: 449,
+          mrp: 599,
+          rating: 4.8,
+          reviews: 532,
+          availability: "In Stock",
+          short: "Good luck succulent, minimal care.",
+          size: "Small",
+          age: "1 year",
+          care: "Bright indirect light; water once in 10 days.",
+          zone: "9–12",
+          pot: "5-inch ceramic pot; succulent mix",
+          imgs: ["imgs/p91.png", "imgs/p92.png"],
+          sellerReviews: "98% positive over last 12 months.",
+          shipping: "Ships in 24 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free on arrival.",
+          pests: "Mealybugs occasionally.",
+        },
+        {
+          id: "p10",
+          name: "Bamboo Palm",
+          price: 1299,
+          mrp: 1599,
+          rating: 4.7,
+          reviews: 278,
+          availability: "In Stock",
+          short: "Air purifier, tropical look, indoor friendly.",
+          size: "Large",
+          age: "2 years",
+          care: "Moderate light; water weekly.",
+          zone: "9–12",
+          pot: "8-inch pot; peat-based mix",
+          imgs: ["imgs/p101.png", "imgs/p102.png"],
+          sellerReviews: "95% positive over last 12 months.",
+          shipping: "Ships in 48 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-checked before shipping.",
+          pests: "Spider mites, aphids.",
+        },
+        {
+          id: "p12",
+          name: "Ficus Bonsai",
+          price: 2499,
+          mrp: 2999,
+          rating: 4.8,
+          reviews: 189,
+          availability: "In Stock",
+          short: "Miniature tree for decor, symbolic charm.",
+          size: "Small",
+          age: "3 years",
+          care: "Bright light; water weekly.",
+          zone: "9–11",
+          pot: "Ceramic bonsai pot; bonsai mix",
+          imgs: ["imgs/p121.png", "imgs/p122.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Ships in 48 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free.",
+          pests: "Scale insects, mealybugs.",
+        },
+        {
+          id: "p13",
+          name: "Bougainvillea",
+          price: 299,
+          mrp: 399,
+          rating: 4.6,
+          reviews: 482,
+          availability: "In Stock",
+          short: "Colorful flowering plant, thrives outdoors.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Full sun; water twice a week.",
+          zone: "All India (prefers warm areas)",
+          pot: "8-inch terracotta pot; sandy mix",
+          imgs: ["imgs/p131.png", "imgs/p132.png"],
+          sellerReviews: "95% positive over last 12 months.",
+          shipping: "Ships in 48 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Healthy plant, pest-checked.",
+          pests: "Aphids, caterpillars.",
+        },
+        {
+          id: "p14",
+          name: "Hibiscus ",
+          price: 349,
+          mrp: 449,
+          rating: 4.7,
+          reviews: 421,
+          availability: "In Stock",
+          short: "Flowering shrub, medicinal uses.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Full sun; water daily in summer.",
+          zone: "All India",
+          pot: "10-inch pot; garden soil mix",
+          imgs: ["imgs/p141.png", "imgs/p142.png"],
+          sellerReviews: "96% positive over last 12 months.",
+          shipping: "Ships in 48 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives pest-checked.",
+          pests: "Aphids, mites.",
+        },
+        {
+          id: "p15",
+          name: "Neem Tree Sapling",
+          price: 199,
+          mrp: 299,
+          rating: 4.8,
+          reviews: 368,
+          availability: "In Stock",
+          short: "Medicinal tree, pest-repellent.",
+          size: "Small",
+          age: "6 months",
+          care: "Full sun; water twice a week.",
+          zone: "All India",
+          pot: "Plastic grow bag; garden soil",
+          imgs: ["imgs/p151.png", "imgs/p152.png"],
+          sellerReviews: "99% positive over last 12 months.",
+          shipping: "Ships in 24 hrs.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives healthy.",
+          pests: "Generally pest-free.",
+        },
+        {
+          id: "p17",
+          name: "ZZ Plant",
+          price: 799,
+          mrp: 999,
+          rating: 4.9,
+          reviews: 520,
+          availability: "In Stock",
+          short: "Low maintenance, thrives in low light, perfect for offices.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Low to bright light; water every 15–20 days.",
+          zone: "9–11 (adaptable indoors across India)",
+          pot: "6-inch ceramic pot; well-draining soil",
+          imgs: ["imgs/p171.png", "imgs/p172.png"],
+          sellerReviews: "99% positive over last 12 months.",
+          shipping: "Dispatch in 24 hrs; shock-proof packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Certified pest-free.",
+          pests: "Generally resistant.",
+        },
+        {
+          id: "p19",
+          name: "Chrysanthemum",
+          price: 399,
+          mrp: 599,
+          rating: 4.6,
+          reviews: 192,
+          availability: "In Stock",
+          short: "Seasonal flowers with vibrant colors.",
+          size: "Small",
+          age: "6–8 months",
+          care: "Full sun; water regularly during blooming.",
+          zone: "8–11 (outdoors in India)",
+          pot: "6-inch nursery pot; compost-enriched mix",
+          imgs: ["imgs/p191.png", "imgs/p192.png"],
+          sellerReviews: "95% positive over last 12 months.",
+          shipping: "Ships in 24 hrs; bloom-care packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives budded or blooming.",
+          pests: "Watch for aphids; treat organically.",
+        },
+        {
+          id: "p20",
+          name: "Curry Leaf Plant",
+          price: 299,
+          mrp: 399,
+          rating: 4.8,
+          reviews: 412,
+          availability: "In Stock",
+          short: "Popular Indian herb; aromatic leaves for cooking.",
+          size: "Small",
+          age: "8–10 months",
+          care: "Full sun; water 2–3 times weekly.",
+          zone: "9–11 (outdoors in India)",
+          pot: "6-inch plastic pot; sandy loam soil",
+          imgs: ["imgs/p201.png", "imgs/p202.png"],
+          sellerReviews: "98% positive over last 12 months.",
+          shipping: "Ships in 24 hrs; aroma-safe packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free and healthy foliage.",
+          pests: "Occasional scale insects.",
+        },
+        {
+          id: "p21",
+          name: "Tulsi",
+          price: 199,
+          mrp: 299,
+          rating: 4.9,
+          reviews: 652,
+          availability: "In Stock",
+          short: "Sacred medicinal herb; used in Ayurveda.",
+          size: "Small",
+          age: "6–8 months",
+          care: "Full sunlight; water daily in warm months.",
+          zone: "9–11 (ideal outdoors in India)",
+          pot: "6-inch earthen pot; organic soil mix",
+          imgs: ["imgs/p211.png", "imgs/p212.png"],
+          sellerReviews: "99% positive over last 12 months.",
+          shipping: "Dispatch in 24 hrs; eco-safe packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-free and healthy aroma.",
+          pests: "Aphids and mealybugs; neem spray recommended.",
+        },
+        {
+          id: "p22",
+          name: "Rose ",
+          price: 399,
+          mrp: 599,
+          rating: 4.7,
+          reviews: 523,
+          availability: "In Stock",
+          short: "Classic flowering plant; fragrant blooms.",
+          size: "Medium",
+          age: "1–2 years",
+          care: "Full sun; water daily during blooming.",
+          zone: "8–11 (outdoors across India)",
+          pot: "8-inch ceramic pot; nutrient-rich mix",
+          imgs: ["imgs/p221.png", "imgs/p222.png"],
+          sellerReviews: "96% positive over last 12 months.",
+          shipping: "Ships in 48 hrs; bloom protection wrap.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Healthy, budded plant.",
+          pests: "Aphids; regular pruning helps.",
+        },
+        {
+          id: "p23",
+          name: "Lavender",
+          price: 699,
+          mrp: 899,
+          rating: 4.6,
+          reviews: 188,
+          availability: "In Stock",
+          short: "Aromatic herb; calming fragrance.",
+          size: "Small",
+          age: "1 year",
+          care: "Full sun; water once soil is dry.",
+          zone: "8–10 (ideal in cooler parts of India)",
+          pot: "6-inch terracotta pot; sandy soil mix",
+          imgs: ["imgs/p231.png", "imgs/p232.png"],
+          sellerReviews: "94% positive over last 12 months.",
+          shipping: "Ships in 48 hrs; fragrance-protection packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Fragrance-rich healthy plant.",
+          pests: "Generally resistant.",
+        },
+        {
+          id: "p51",
+          name: "Ixora Plant",
+          price: 599,
+          mrp: 749,
+          rating: 4.6,
+          reviews: 278,
+          availability: "In Stock",
+          short: "Vibrant yellow blooms, ideal for garden borders and pots.",
+          size: "Small to Medium",
+          age: "1–2 years",
+          care: "Full sun to partial shade; water every 2–3 days in summer.",
+          zone: "9–11 (grows well across tropical India)",
+          pot: "6-inch terracotta pot; fertile, well-draining soil",
+          imgs: ["imgs/p511.png", "imgs/p512.png"],
+          sellerReviews: "96% positive over last 12 months.",
+          shipping: "Ships in 24–48 hrs. Eco-friendly packaging.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Arrives disease-free and ready to plant.",
+          pests: "Watch for aphids and mealybugs; neem oil recommended.",
+        },
+        {
+          id: "p52",
+          name: "Betel Leaf Plant",
+          price: 349,
+          mrp: 499,
+          rating: 4.7,
+          reviews: 356,
+          availability: "In Stock",
+          short: "Aromatic leaves for culinary and medicinal use.",
+          size: "Small",
+          age: "6 months – 1 year",
+          care: "Partial shade; keep soil consistently moist.",
+          zone: "10–12 (thrives in humid climates)",
+          pot: "5-inch recycled pot; rich organic mix",
+          imgs: ["imgs/p521.png", "imgs/p522.png"],
+          sellerReviews: "97% positive over last 12 months.",
+          shipping: "Ships in 24 hrs. Climate-protected delivery.",
+          refund: "30-day healthy-arrival replacement.",
+          warranty: "30 days",
+          health: "Pest-checked, organically grown.",
+          pests: "Occasional scale insects; treat with neem spray.",
+        },
+      ];
+
+      function svgPlant(color = "#2f8f6b") {
+        const esc = encodeURIComponent;
+        const svg = `<?xml version='1.0'?>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>
+          <defs>
+            <linearGradient id='bg' x1='0' x2='0' y1='0' y2='1'>
+              <stop offset='0%' stop-color='%23eef6f0'/>
+              <stop offset='100%' stop-color='%23ffffff'/>
+            </linearGradient>
+          </defs>
+          <rect width='100%' height='100%' fill='url(%23bg)'/>
+          <g fill='${color}'>
+            <circle cx='170' cy='180' r='70'/>
+            <rect x='150' y='220' width='40' height='40' rx='8' fill='%231f6a50'/>
+            <path d='M170 120 C160 90 180 60 210 55 C210 90 190 105 170 120'/>
+            <path d='M170 120 C140 110 120 90 120 75 C150 85 160 100 170 120'/>
+          </g>
+        </svg>`;
+        return `data:image/svg+xml;utf8,${esc(svg)}`;
+      }
+
+      // ------------------------------
+      // Render Products
+      // ------------------------------
+      const grid = $$("#productGrid");
+      function renderProducts() {
+        grid.innerHTML = products
+          .map(
+            (p) => `
+        <article class="card" data-id="${p.id}">
+          <div class="card-figure" style="position:relative">
+            <img alt="${p.name}" src="${p.imgs[0]}" loading="lazy"/>
+            ${
+              p.mrp && p.mrp > p.price
+                ? `<span class='badge'>${Math.round(
+                    (1 - p.price / p.mrp) * 100
+                  )}% OFF</span>`
+                : ""
+            }
+          </div>
+          <div class="card-body">
+            <div style="display:flex;align-items:center;gap:8px">
+              <h3 style="margin:0;font-size:1.05rem">${p.name}</h3>
+              <span class="availability">${p.availability}</span>
+            </div>
+            <p style="margin:.3rem 0 .6rem;color:#325d4b">${p.short}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div class="price">
+                <strong>₹${p.price}</strong>
+                ${p.mrp ? `<span class="mrp">₹${p.mrp}</span>` : ""}
+              </div>
+              <div class="rating" aria-label="${p.rating} stars out of 5">
+                ${"★".repeat(
+                  Math.round(p.rating)
+                )} <span style="font-weight:500">(${p.reviews})</span>
+              </div>
+            </div>
+            <div class="actions" style="margin-top:10px">
+              <button class="btn" onclick="addToCart('${
+                p.id
+              }')">Add to Cart</button>
+              <button class="btn secondary" onclick="openProduct('${
+                p.id
+              }')">More Info</button>
+            </div>
+          </div>
+        </article>
+      `
+          )
+          .join("");
+      }
+
+      // ------------------------------
+      // Product Modal
+      // ------------------------------
+      const productModal = $$("#productModal");
+      const productBody = $$("#productBody");
+      $$("#closeProduct").addEventListener("click", () =>
+        toggle(productModal, false)
+      );
+      function openProduct(id) {
+        const p = products.find((x) => x.id === id);
+        if (!p) return;
+        $$("#productTitle").textContent = p.name;
+        productBody.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            ${(p.imgs || [])
+              .map(
+                (src) =>
+                  `<img src="${src}" alt="${p.name}" style="border-radius:12px;border:1px solid #eee;margin-bottom:10px"/>`
+              )
+              .join("")}
+          </div>
+          <div>
+            <div class="price" style="margin-bottom:8px"><strong style="font-size:1.2rem">₹${
+              p.price
+            }</strong> ${
+          p.mrp ? `<span class='mrp'>₹${p.mrp}</span>` : ""
+        }</div>
+            <p>${p.short}</p>
+            <ul style="line-height:1.8">
+              <li><strong>Plant Description:</strong> ${
+                p.name
+              } — hardy indoor variety.</li>
+              <li><strong>Size & Age:</strong> ${p.size}, ${p.age}</li>
+              <li><strong>Care & Maintenance:</strong> ${p.care}</li>
+              <li><strong>Hardiness Zone:</strong> ${p.zone}</li>
+              <li><strong>Pot & Soil:</strong> ${p.pot}</li>
+              <li><strong>Seller Reviews:</strong> ${p.sellerReviews}</li>
+              <li><strong>Shipping & Delivery:</strong> ${p.shipping}</li>
+              <li><strong>Return & Refund:</strong> ${p.refund}</li>
+              <li><strong>Warranty / Guarantee:</strong> ${p.warranty}</li>
+              <li><strong>Plant Health Guarantee:</strong> ${p.health}</li>
+              <li><strong>Pest & Disease Info:</strong> ${p.pests}</li>
+            </ul>
+            <div class="actions" style="margin-top:12px">
+              <button class="btn" onclick="addToCart('${
+                p.id
+              }')">Add to Cart</button>
+              <button class="btn secondary" onclick="toggle(productModal,false)">Close</button>
+            </div>
+          </div>
+        </div>`;
+        toggle(productModal, true);
+        gtag("event", "product_detail_open", { item_id: id });
+      }
+
+      // ------------------------------
+      // Cart
+      // ------------------------------
+      const cartDrawer = $$("#cartDrawer");
+      const cartBtn = $$("#cartBtn");
+      const closeCart = $$("#closeCart");
+      const cartCount = $$("#cartCount");
+      const cartList = $$("#cartList");
+      const cartTotal = $$("#cartTotal");
+      const couponInput = $$("#couponInput");
+      const applyCoupon = $$("#applyCoupon");
+      const checkoutWA = $$("#checkoutWA");
+
+      let cart = JSON.parse(localStorage.getItem("ggg_cart") || "[]");
+      let coupon = localStorage.getItem("ggg_coupon") || "";
+      if (coupon) couponInput.value = coupon;
+
+      function saveCart() {
+        localStorage.setItem("ggg_cart", JSON.stringify(cart));
+      }
+
+      function addToCart(id) {
+        const p = products.find((x) => x.id === id);
+        if (!p) return;
+        const found = cart.find((i) => i.id === id);
+        if (found) found.qty++;
+        else cart.push({ id, qty: 1 });
+        saveCart();
+        renderCart();
+        bumpCartIcon();
+        gtag("event", "add_to_cart", {
+          items: [{ item_id: id, price: p.price }],
+        });
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.find((i) => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter((i) => i.id !== id);
+        saveCart();
+        renderCart();
+      }
+
+      function removeItem(id) {
+        cart = cart.filter((i) => i.id !== id);
+        saveCart();
+        renderCart();
+      }
+
+      function computeTotals() {
+        const subtotal = cart.reduce((s, i) => {
+          const p = products.find((x) => x.id === i.id);
+          return s + (p ? p.price : 0) * i.qty;
+        }, 0);
+        let discount = 0;
+        if (coupon && coupon.toUpperCase() === "GGG150") discount = 150;
+        return { subtotal, discount, total: Math.max(0, subtotal - discount) };
+      }
+
+      function renderCart() {
+        cartCount.textContent = cart.reduce((s, i) => s + i.qty, 0);
+        if (cart.length === 0) {
+          cartList.innerHTML =
+            '<p class="note">Your cart is empty. Add some leafy friends 🌿</p>';
+        } else {
+          cartList.innerHTML = cart
+            .map((i) => {
+              const p = products.find((x) => x.id === i.id);
+              return `<div class="cart-item">
+            <img src="${p.imgs[0]}" alt="${
+                p.name
+              }" style="border-radius:10px;border:1px solid #eee"/>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><strong>${
+                p.name
+              }</strong><span>₹${p.price}</span></div>
+              <div class="qty" aria-label="Quantity controls">
+                <button onclick="changeQty('${i.id}',-1)">−</button>
+                <span>${i.qty}</span>
+                <button onclick="changeQty('${i.id}',1)">+</button>
+                <button class="btn secondary" style="margin-left:auto" onclick="removeItem('${
+                  i.id
+                }')">Remove</button>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center">₹${
+              p.price * i.qty
+            }</div>
+          </div>`;
+            })
+            .join("");
+        }
+        const { subtotal, discount, total } = computeTotals();
+        cartTotal.textContent = `₹${total}`;
+      }
+
+      function bumpCartIcon() {
+        cartBtn.style.transform = "scale(1.06)";
+        setTimeout(() => (cartBtn.style.transform = "scale(1)"), 160);
+      }
+
+      cartBtn.addEventListener("click", () => toggle(cartDrawer, true));
+      closeCart.addEventListener("click", () => toggle(cartDrawer, false));
+      applyCoupon.addEventListener("click", () => {
+        coupon = couponInput.value.trim();
+        localStorage.setItem("ggg_coupon", coupon);
+        renderCart();
+        gtag("event", "apply_coupon", { coupon });
+      });
+
+      checkoutWA.addEventListener("click", () => {
+        const lines = cart.map((i) => {
+          const p = products.find((x) => x.id === i.id);
+          return `${p.name} x ${i.qty} = ₹${p.price * i.qty}`;
+        });
+        const { subtotal, discount, total } = computeTotals();
+        const msg = encodeURIComponent(
+          `Hello GGG,%0AI want to order:%0A- ${lines.join(
+            "%0A- "
+          )}%0A%0ASubtotal: ₹${subtotal}%0ADiscount: ₹${discount}%0ATotal: ₹${total}%0A%0AName: ${
+            localStorage.getItem("lead_name") || ""
+          }%0APhone: ${localStorage.getItem("lead_phone") || ""}%0APincode: ${
+            localStorage.getItem("lead_pin") || ""
+          }`
+        );
+        window.open(`https://wa.me/919019112106?text=${msg}`, "_blank");
+        gtag("event", "begin_checkout", { value: total, currency: "INR" });
+      });
+
+      // ------------------------------
+      // Lead Form & Modals
+      // ------------------------------
+      const leadForm = $$("#leadForm");
+      const leadModal = $$("#leadModal");
+      const openLeadBtn = $$("#openLead");
+      const closeLeadBtn = $$("#closeLead");
+      const quizBtn = $$("#quizBtn");
+
+      openLeadBtn.addEventListener("click", () => toggle(leadModal, true));
+      closeLeadBtn.addEventListener("click", () => toggle(leadModal, false));
+
+      leadForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = $$("#leadName").value.trim();
+        const email = $$("#leadEmail").value.trim();
+        const phone = $$("#leadPhone").value.trim();
+        const pin = $$("#leadPincode").value.trim();
+        const freebie = $$("#leadFreebie").value;
+        const consent = $$("#leadConsent").checked;
+        if (!name || !email || !pin || !consent) {
+          alert("Please fill name, email, pincode and consent.");
+          return;
+        }
+        localStorage.setItem("lead_name", name);
+        localStorage.setItem("lead_email", email);
+        localStorage.setItem("lead_phone", phone);
+        localStorage.setItem("lead_pin", pin);
+        localStorage.setItem("lead_freebie", freebie);
+        // Simulate code issuance
+        const code = "GGG150";
+        localStorage.setItem("lead_coupon", code);
+        $$("#codeOut").textContent = code;
+        toggle(leadModal, true);
+        gtag("event", "generate_lead", { method: "form", freebie });
+      });
+
+      // Simple quiz demo → scroll to products & highlight low-light picks
+      quizBtn.addEventListener("click", () => {
+        window.scrollTo({ top: grid.offsetTop - 70, behavior: "smooth" });
+        // Could expand with actual logic; here we flash the first three cards
+        $$$(".card")
+          .slice(0, 3)
+          .forEach((el, i) => {
+            setTimeout(() => {
+              el.style.outline = "3px solid var(--green-500)";
+              setTimeout(() => (el.style.outline = "none"), 1200);
+            }, i * 200);
+          });
+        gtag("event", "quiz_start");
+      });
+
+      // Corporate modal
+      const corpModal = $$("#corpModal");
+      $$("#openCorporate").addEventListener("click", () =>
+        toggle(corpModal, true)
+      );
+      $$("#closeCorp").addEventListener("click", () =>
+        toggle(corpModal, false)
+      );
+      $$("#corpForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        toggle(corpModal, false);
+        alert("Thanks! Our team will reach out shortly on your email/phone.");
+        gtag("event", "generate_lead", { method: "corporate" });
+      });
+
+      function toggle(el, on) {
+        const isDrawer = el === cartDrawer;
+        if (isDrawer) {
+          el.classList.toggle("open", on);
+          el.setAttribute("aria-hidden", on ? "false" : "true");
+          return;
+        }
+        el.classList.toggle("open", on);
+        el.setAttribute("aria-hidden", on ? "false" : "true");
+        if (on) {
+          // lock scroll
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+
+      // ------------------------------
+      // Floating Leaves Animation
+      // ------------------------------
+      function spawnLeaves() {
+        const wrap = $$("#leaves");
+        wrap.style.position = "fixed";
+        wrap.style.inset = "0";
+        wrap.style.pointerEvents = "none";
+        for (let i = 0; i < 10; i++) {
+          const leaf = document.createElement("div");
+          leaf.className = "leaf";
+          leaf.style.left = Math.random() * 100 + "vw";
+          leaf.style.animation = `fall ${12 + Math.random() * 10}s linear ${
+            Math.random() * 5
+          }s infinite`;
+          leaf.innerHTML = `<svg viewBox='0 0 48 48' width='34' height='34' xmlns='http://www.w3.org/2000/svg'>
+          <path d='M42 6C34 6 21 9 12 18C3 27 6 40 6 42c2 0 15-3 24-12C39 21 42 8 42 6Z' fill='${
+            ["#2f8f6b", "#1f6a50", "#44a07a"][Math.floor(Math.random() * 3)]
+          }'/>
+        </svg>`;
+          wrap.appendChild(leaf);
+        }
+      }
+
+      // Init
+      renderProducts();
+      renderCart();
+      spawnLeaves();
+      $$("#year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
